@@ -18,10 +18,11 @@ import { Input } from '@/components/ui/input';
 import { ArrowLeft, Lock, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 
 export default function Page() {
-  const {push} = useRouter()
+  const { push } = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema)
   })
@@ -40,8 +41,8 @@ export default function Page() {
   );
 
   return (
-    <main className='flex h-screen justify-center items-center'>
-      <div className='flex relative flex-col items-center md:border rounded-md gap-2 py-4 w-[400px]'>
+    <main className='flex h-screen justify-center items-center bg-primary-main'>
+      <div className='flex relative flex-col items-center shadow bg-white md:border rounded-md gap-2 py-4 w-[400px]'>
         <div className='absolute left-4'>
           <ArrowLeft className='hover:cursor-pointer' onClick={() => push("/")} />
         </div>
@@ -98,7 +99,7 @@ export default function Page() {
                 disabled={!canSubmit}
                 form="login-form"
               >
-                Entrar
+                Log in
               </Button>
               <span className="text-typography/60">or join us with</span>
               <Button
@@ -112,6 +113,7 @@ export default function Page() {
               >
                 Google
               </Button>
+              <p>Doesn&apos;t have an account? <Link href={"signup"} className='text-primary-main'>Sign up here!</Link></p>
             </div>
           </form>
         </Form>
