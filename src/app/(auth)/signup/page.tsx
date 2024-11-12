@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useContext, useMemo } from 'react'
 import LogoImg from "@/assets/fox.svg"
 import Image from 'next/image'
 import {
@@ -19,9 +19,11 @@ import { ArrowLeft, Lock, Mail, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { UserContext } from '@/contexts/UserContext';
 
 
 export default function Page() {
+  const {handleSignUpRequest} = useContext(UserContext)
   const { push } = useRouter()
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema)
@@ -35,9 +37,9 @@ export default function Page() {
   const onSubmit = useCallback(
     async (data: z.infer<typeof signUpSchema>) => {
       console.log(data)
-      // await handleLoginRequest(data);
+      await handleSignUpRequest({user: data});
     },
-    [] // [handleLoginRequest]
+    [handleSignUpRequest]
   );
 
   return (
@@ -61,7 +63,7 @@ export default function Page() {
           >
             <FormField
               control={form.control}
-              name="firstName"
+              name="first_name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>First Name</FormLabel>
@@ -77,7 +79,7 @@ export default function Page() {
             />
             <FormField
               control={form.control}
-              name="lastName"
+              name="last_name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Last Name</FormLabel>

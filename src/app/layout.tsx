@@ -1,8 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css'
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Suspense } from "react";
-import NavBar from "@/components/shared/NavBar";
+import { ToastContainer } from "react-toastify";
+import ContextProvider from "@/contexts/ContextProviders";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,8 +32,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ToastContainer autoClose={3000} />
         <Suspense>
-          {children}
+          <ContextProvider>
+            {children}
+          </ContextProvider>
         </Suspense>
       </body>
     </html>

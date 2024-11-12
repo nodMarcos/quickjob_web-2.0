@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useContext, useMemo } from 'react'
 import LogoImg from "@/assets/fox.svg"
 import Image from 'next/image'
 import {
@@ -19,9 +19,10 @@ import { ArrowLeft, Lock, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
+import { UserContext } from '@/contexts/UserContext';
 
 export default function Page() {
+  const { handleLoginRequest } = useContext(UserContext);
   const { push } = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema)
@@ -34,10 +35,9 @@ export default function Page() {
 
   const onSubmit = useCallback(
     async (data: z.infer<typeof loginSchema>) => {
-      console.log(data)
-      // await handleLoginRequest(data);
+      await handleLoginRequest({user: data});
     },
-    [] // [handleLoginRequest]
+    [handleLoginRequest]
   );
 
   return (
