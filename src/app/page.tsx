@@ -1,13 +1,16 @@
 import Image from "next/image";
-import maidImg from "@/assets/empregada.jpg"
+import maidImg from "@/assets/maid.jpg"
 import foxImg from "@/assets/foxss.png"
 import moneyImg from "@/assets/joia.jpg"
 import Link from "next/link";
+import Footer from "@/components/shared/Footer";
+import NavBar from "@/components/shared/NavBar";
 
 export default function Page() {
   return (
     <main className="flex flex-col relative min-h-[100lvh] bg-[#fff]">
-      <div className="flex justify-center items-center py-5">
+      <NavBar />
+      <div className="flex flex-col-reverse md:flex-row justify-center items-center py-5 gap-7">
         <div className="flex flex-col items-center gap-6">
           <div className="flex flex-col gap-2 text-center ">
             <h1 className="text-4xl font-medium max-w-[500px]">Choose the professional that better suits you.</h1>
@@ -16,15 +19,19 @@ export default function Page() {
             </span>
           </div>
           <Link href={"login"} className="w-42 text-sm bg-primary-main text-center text-white p-2 rounded">
-            QUERO PARTICIPAR!!!
+            I WANT TO PARTICIPATE!!!
           </Link>
         </div>
-        <Image src={maidImg} width={500} height={400} alt={"maid"} />
+        <div className="w-80 md:w-96">
+          <Image src={maidImg} alt={"maid"} />
+        </div>
       </div>
 
-      <div className="flex justify-center items-center pb-2 bg-primary-dark">
-        <Image src={foxImg} width={500} height={400} alt={"maid"} />
-        <div className="flex flex-col items-center gap-6 text-white">
+      <div className="flex flex-col md:flex-row justify-center items-center pb-2 gap-7 bg-primary-main">
+        <div className="w-80 md:w-96">
+          <Image src={foxImg} width={500} height={400} alt={"maid"} />
+        </div>
+        <div className="flex flex-col items-center gap-6 py-4 text-white">
           <div className="flex flex-col gap-2 text-center max-w-[500px]">
             <h1 className="text-4xl font-medium ">Search for a professional in a quick and easy way with QuickJob</h1>
             <span>
@@ -34,17 +41,20 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex justify-center items-center py-5">
-        <Image src={moneyImg} width={500} height={400} alt={"maid"} />
+      <div className="flex flex-col-reverse md:flex-row justify-center items-center py-5 gap-7">
         <div className="flex flex-col items-center gap-6 ">
           <div className="flex flex-col gap-2 text-center max-w-[500px]">
             <h1 className="text-4xl font-medium ">Sign up and earn extra income by owning your own business!</h1>
           </div>
           <Link href={"signup"} className="w-42 text-sm bg-primary-main text-center text-white p-2 rounded">
-            QUERO PARTICIPAR!!!
+            I WANT TO PARTICIPATE!!!
           </Link>
         </div>
+        <div className="w-80 md:w-96">
+          <Image src={moneyImg} width={500} height={400} alt={"maid"} />
+        </div>
       </div>
+      <Footer />
     </main>
   );
 }

@@ -5,8 +5,6 @@ import "./globals.css";
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import ContextProvider from "@/contexts/ContextProviders";
-import NavBar from '@/components/shared/NavBar';
-import Footer from '@/components/shared/Footer';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,9 +35,7 @@ export default function RootLayout({
         <ToastContainer autoClose={3000} />
         <Suspense>
           <ContextProvider>
-            <NavBar />
             {children}
-            <Footer />
           </ContextProvider>
         </Suspense>
       </body>

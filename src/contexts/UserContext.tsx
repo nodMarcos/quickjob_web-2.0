@@ -5,6 +5,7 @@ import { userRequest } from "@/requests/user";
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 import { destroyCookie, parseCookies } from 'nookies'
+import { useRouter } from "next/navigation";
 
 export interface UserContextType {
   user: currentUserResponse | null;
@@ -29,6 +30,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [loadingUser, setLoadingUser] = useState(true);
   const token = parseCookies()?.token
   const queryClient = useQueryClient();
+  const { push } = useRouter();
 
   const { data: userResponse, isError } = useQuery({
     queryKey: ["me"],
@@ -69,7 +71,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       queryClient.invalidateQueries({
         queryKey: ["me"],
       });
-      toast.success("You're logged in!")
+      push('dashboard')
+
     },
     onError: (error) => {
       toast.error('There was an error logging in. Please try again.')

@@ -43,9 +43,9 @@ export default function Page() {
   );
 
   return (
-    <main className='flex h-screen justify-center items-center bg-primary-main'>
-      <div className='flex relative flex-col items-center shadow bg-white md:border rounded-md gap-2 py-4 w-[400px]'>
-        <div className='absolute left-4'>
+    <main className='flex min-h-[100lvh] justify-center items-center bg-primary-main'>
+      <div className='flex relative flex-col h-screen items-center py-5 w-full justify-center md:w-[400px] md:h-[700px] shadow bg-white md:border md:rounded-md gap-2 '>
+        <div className='absolute left-4 top-5'>
           <ArrowLeft className='hover:cursor-pointer' onClick={() => push("/")} />
         </div>
         <Image
