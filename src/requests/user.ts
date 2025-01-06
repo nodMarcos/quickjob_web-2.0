@@ -10,9 +10,6 @@ async function login(payload: loginParams) {
       url: "/login",
       data: payload,
     });
-
-    console.log(headers.authorization)
-    console.log(data)
     
     setCookie(null, 'token', headers.authorization, {
       maxAge: 30 * 24 * 60 * 60,

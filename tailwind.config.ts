@@ -23,6 +23,7 @@ const config: Config = {
 				primary: {
 					main: '#db3218',
 					dark: '#C52233',
+					secondary: '#fffefc',
 					light: '#f57c00',
 					disabled: '#545454',
 					input: '#647079',

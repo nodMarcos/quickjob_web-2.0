@@ -23,7 +23,7 @@ export default function NavBar() {
   ]
 
   return (
-    <nav className="flex items-center justify-between px-5 bg-primary-main py-1.5">
+    <nav className="flex items-center justify-between pl-5 pr-10 bg-primary-main py-1.5">
       <div className='md:hidden relative'>
         <Menu color='#fff' onClick={() => setShowOptions(!showOptions)} />
         {showOptions && (

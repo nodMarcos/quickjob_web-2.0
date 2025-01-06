@@ -14,6 +14,7 @@ export interface UserContextType {
   setLoadingUser: React.Dispatch<boolean>;
   handleLoginRequest: (loginParams: loginParams) => void;
   handleSignUpRequest: (signUpParams: signUpParams) => void;
+  removeToken: () => void;
 }
 
 export const UserContext = createContext<UserContextType>({
@@ -22,7 +23,8 @@ export const UserContext = createContext<UserContextType>({
   loadingUser: false,
   setLoadingUser: () => { },
   handleLoginRequest: () => { },
-  handleSignUpRequest: () => { }
+  handleSignUpRequest: () => { },
+  removeToken: () => { }
 });
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -108,7 +110,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         loadingUser,
         setLoadingUser,
         handleLoginRequest,
-        handleSignUpRequest
+        handleSignUpRequest,
+        removeToken
       }}
     >
       {children}

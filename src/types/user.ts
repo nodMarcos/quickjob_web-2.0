@@ -3,6 +3,7 @@ export type currentUserResponse = {
   email: string;
   first_name: string;
   last_name: string;
+  fullname: string;
 };
 
 export type loginParams = {
